@@ -35,15 +35,15 @@ function checkLeftValue(shifted, value, bit) {
     }
 }
 // Shift the number -23 to the left and right 5 bits
-console.log("\nShift the number -23:");
 var value = -23;
 var bit = 5;
+console.log("\nShift the number " + value + " to the right and left " + bit + " bit/s:");
 var number = shift(value, bit);
 checkLeftValue(number, value, bit);
 // Shift the number 11 to the left and right 4 bits
-console.log("\nShift the number 11:");
 value = 11;
 bit = 4;
+console.log("\nShift the number " + value + " to the right and left " + bit + " bit/s:");
 number = shift(value, bit);
 checkLeftValue(number, value, bit);
 /**
@@ -58,8 +58,8 @@ function doubleValue(number) {
     return double;
 }
 // Double the number 32
-console.log("\nDouble the number 32:");
 value = 32;
+console.log("\nDouble the number " + value + ":");
 var double = doubleValue(value);
 /**
  * Quadruples an integer
@@ -73,8 +73,8 @@ function quadrupleValue(number) {
     return quad;
 }
 // Quadruple the number 32
-console.log("\nQuadruple the number 32:");
 value = 32;
+console.log("\nQuadruple the number " + value + ":");
 var quad = quadrupleValue(value);
 function divideByTwo(number) {
     var value = number >> 1;
@@ -82,12 +82,12 @@ function divideByTwo(number) {
     return value;
 }
 // Divide the number 32 by two
-console.log("Divide the number 32 by two:");
 value = 32;
+console.log("Divide the number " + value + " by two:");
 var dividedByTwo = divideByTwo(value);
 function powersOfTwo(exp) {
     var number = 1 << exp;
-    console.log("Two raised to the " + exp + " power is " + number);
+    console.log("2^" + exp + " power is " + number);
     return number;
 }
 // Powers of two

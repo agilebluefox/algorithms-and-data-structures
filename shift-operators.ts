@@ -36,16 +36,16 @@ function checkLeftValue(shifted, value, bit) {
 }
 
 // Shift the number -23 to the left and right 5 bits
-console.log(`\nShift the number -23:`);
 let value = -23;
 let bit = 5;
+console.log(`\nShift the number ${value} to the right and left ${bit} bit/s:`);
 let number = shift(value, bit);
 checkLeftValue(number, value, bit);
 
 // Shift the number 11 to the left and right 4 bits
-console.log(`\nShift the number 11:`);
 value = 11;
 bit = 4;
+console.log(`\nShift the number ${value} to the right and left ${bit} bit/s:`);
 number = shift(value, bit);
 checkLeftValue(number, value, bit);
 
@@ -62,8 +62,8 @@ function doubleValue(number) {
 }
 
 // Double the number 32
-console.log(`\nDouble the number 32:`);
 value = 32;
+console.log(`\nDouble the number ${value}:`);
 let double = doubleValue(value);
 
 /**
@@ -79,8 +79,8 @@ function quadrupleValue(number) {
 }
 
 // Quadruple the number 32
-console.log(`\nQuadruple the number 32:`);
 value = 32;
+console.log(`\nQuadruple the number ${value}:`);
 let quad = quadrupleValue(value);
 
 function divideByTwo(number) {
@@ -90,13 +90,13 @@ function divideByTwo(number) {
 }
 
 // Divide the number 32 by two
-console.log(`\Divide the number 32 by two:`);
 value = 32;
+console.log(`\Divide the number ${value} by two:`);
 let dividedByTwo = divideByTwo(value);
 
 function powersOfTwo(exp) {
     let number = 1 << exp;
-    console.log(`Two raised to the ${exp} power is ${number}`);
+    console.log(`2^${exp} power is ${number}`);
     return number;
 }
 
@@ -140,3 +140,13 @@ function mortonfyIt(num1, num2) {
 // Morton Number
 console.log(`\nCalculate the Morton Number:`);
 let num = mortonfyIt(15, 48);
+
+
+// Optional solution
+function morton(x, y){
+  var morton = 0;
+  for(var i = 0; i < 64; i++){
+  morton |= (y & 1 << i) << i | (x & 1 << i) << (i + 1)
+  }
+  return morton;
+}
