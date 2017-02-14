@@ -14,6 +14,7 @@ function removeLessThanFive(numbers) {
     }
     return numbers;
 }
+console.log("\n***** Filter an array of numbers *****\n");
 var myArray = [1, 4, 5, 8, 6, 5, 7, 3, 5, 6, 9, 7];
 console.log("The original array: ", myArray);
 var filteredArray = removeLessThanFive(myArray);
