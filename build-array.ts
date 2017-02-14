@@ -56,3 +56,20 @@ Array.prototype.pop = function() {
     this.length--;
     return value;
 };
+
+// Inserting a value into any point in the array
+Array.prototype.insert = function(index, value) {
+    // Check the index is valid
+    if (index < 0 || index >= this.length) {
+        throw new Error('Index error');
+    }
+    // Allocate more memory if smaller than needed
+    if (this.length >= this._capacity) {
+        this._resize((this.length + 1) * Array.SIZE_RATIO);
+    }
+    // Move everything beyond the index where the value is
+    // going to be inserted forward one spot then add the value
+    memory.copy(this.ptr + index + 1, this.ptr + index, this.length - index);
+    memory.set(this.ptr + index, value);
+    this.length++;
+};
