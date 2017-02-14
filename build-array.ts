@@ -47,3 +47,12 @@ Array.prototype.get = function(index) {
     return memory.get(this.ptr + index);
 };
 
+// Remove a value from the end of the array
+Array.prototype.pop = function() {
+    if (this.length == 0) {
+        throw new Error('Index Error');
+    }
+    const value = memory.get(this.ptr + this.length - 1);
+    this.length--;
+    return value;
+};
