@@ -37,3 +37,13 @@ Array.prototype._resize = function(size) {
     // Update the capacity to the allocated memory
     this._capacity = size;
 };
+
+// Retreiving items from the array by adding the index
+// to the memory location for the start of the array - an O(1) cost
+Array.prototype.get = function(index) {
+    if (index < 0 || index >= this.length) {
+        throw new Error('Index error');
+    }
+    return memory.get(this.ptr + index);
+};
+
