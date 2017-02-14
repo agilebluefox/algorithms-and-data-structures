@@ -128,4 +128,12 @@ function mortonfyIt(num1, num2) {
 // Morton Number
 console.log("\nCalculate the Morton Number:");
 var num = mortonfyIt(15, 48);
+// Optional solution
+function morton(x, y) {
+    var morton = 0;
+    for (var i = 0; i < 64; i++) {
+        morton |= (y & 1 << i) << i | (x & 1 << i) << (i + 1);
+    }
+    return morton;
+}
 //# sourceMappingURL=shift-operators.js.map
