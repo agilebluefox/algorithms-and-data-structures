@@ -11,12 +11,12 @@ var Array = function () {
 // Factor by which to allocate more space than you currently need
 // This can optimize the array to O(1) although more memory is
 // temporarily lost.
-Array.SIZE_RATIO = 3;
+var SIZE_RATIO = 3;
 // The push method takes a value, makes a place for it, then stores it
 // To accommodate more items, the resize uses a factor
 Array.prototype.push = function (value) {
     if (this.length >= this._capacity) {
-        this._resize((this.length + 1) * Array.SIZE_RATIO);
+        this._resize((this.length + 1) * SIZE_RATIO);
     }
     memory.set(this.ptr + this.length, value);
     this.length++;
@@ -58,7 +58,7 @@ Array.prototype.insert = function (index, value) {
     }
     // Allocate more memory if smaller than needed
     if (this.length >= this._capacity) {
-        this._resize((this.length + 1) * Array.SIZE_RATIO);
+        this._resize((this.length + 1) * SIZE_RATIO);
     }
     // Move everything beyond the index where the value is
     // going to be inserted forward one spot then add the value
