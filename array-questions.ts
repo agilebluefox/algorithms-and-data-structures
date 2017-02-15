@@ -1,3 +1,9 @@
+/**
+ * Remove numbers less than five from an array
+ * 
+ * @param {number[]} numbers
+ * @returns {number[]} The input array after removing the numbers less than five.
+ */
 function removeLessThanFive(numbers: number[]) {
     let length = numbers.length;
     // iterate over the array and remove values less than five
@@ -101,3 +107,5 @@ mergedArray = mergeSortArray(array1, array2);
 console.log(`The first array: `, array1);
 console.log(`The second array: `, array2);
 console.log(`The merged array: `, mergedArray);
+
+
