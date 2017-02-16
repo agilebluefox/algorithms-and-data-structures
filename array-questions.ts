@@ -108,4 +108,37 @@ console.log(`The first array: `, array1);
 console.log(`The second array: `, array2);
 console.log(`The merged array: `, mergedArray);
 
+/**
+ * Calculate product of all elements except the one at the current index
+ * 
+ * @param {number[]} array - The array of numbers
+ * @returns {number[]} The products of the values of all items except the one at the given index.
+ */
+function product(array: number[]) {
+    // An array to store the products
+    let products: number[] = [];
+    // Loop over the values in the array to get the current index
+    for (let x=0; x < array.length; x++) {
+        // Store the current product
+        let product = 1;
+        // Loop over the values excluding the current index
+        for (let y=0; y < array.length; y++) {
+            // Do not multiply the current index
+            if (y === x) {
+                continue;
+            }
+            // Multiply the current product by the value at the current index
+            product *= array[y];
+        }
+        // Insert the product in the products array at the current index
+        products.push(product);
+    }
+    // Return the array of products
+    return products;
+}
 
+let array = [1,3,9,4];
+let products = product(array);
+console.log(`\n***** Calculate the product of all values except at the current index *****\n`);
+console.log(`The initial array: `, array);
+console.log(`The products array: `, products);

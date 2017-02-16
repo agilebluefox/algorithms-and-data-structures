@@ -1,3 +1,9 @@
+/**
+ * Remove numbers less than five from an array
+ *
+ * @param {number[]} numbers
+ * @returns {number[]} The input array after removing the numbers less than five.
+ */
 function removeLessThanFive(numbers) {
     var length = numbers.length;
     // iterate over the array and remove values less than five
@@ -88,4 +94,29 @@ mergedArray = mergeSortArray(array1, array2);
 console.log("The first array: ", array1);
 console.log("The second array: ", array2);
 console.log("The merged array: ", mergedArray);
+/**
+ * Calculate product of all elements except the one at the current index
+ *
+ * @param {number[]} array - The array of numbers
+ * @returns {number[]} The products of the values of all items except the one at the given index.
+ */
+function product(array) {
+    var products = [];
+    for (var x = 0; x < array.length; x++) {
+        var product_1 = 1;
+        for (var y = 0; y < array.length; y++) {
+            if (y === x) {
+                continue;
+            }
+            product_1 *= array[y];
+        }
+        products.push(product_1);
+    }
+    return products;
+}
+var array = [1, 3, 9, 4];
+var products = product(array);
+console.log("\n***** Calculate the product of all values except at the current index *****\n");
+console.log("The initial array: ", array);
+console.log("The products array: ", products);
 //# sourceMappingURL=array-questions.js.map
