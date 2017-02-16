@@ -101,17 +101,25 @@ console.log("The merged array: ", mergedArray);
  * @returns {number[]} The products of the values of all items except the one at the given index.
  */
 function product(array) {
+    // An array to store the products
     var products = [];
+    // Loop over the values in the array to get the current index
     for (var x = 0; x < array.length; x++) {
+        // Store the current product
         var product_1 = 1;
+        // Loop over the values excluding the current index
         for (var y = 0; y < array.length; y++) {
+            // Do not multiply the current index
             if (y === x) {
                 continue;
             }
+            // Multiply the current product by the value at the current index
             product_1 *= array[y];
         }
+        // Insert the product in the products array at the current index
         products.push(product_1);
     }
+    // Return the array of products
     return products;
 }
 var array = [1, 3, 9, 4];
