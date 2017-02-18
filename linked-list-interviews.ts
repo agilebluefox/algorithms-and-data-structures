@@ -30,7 +30,7 @@ function getRandValue(min, max) {
 }
 
 // Insert some dummy nodes
-let items = getRandValue(30, 179);
+let items = getRandValue(10, 15);
 let demo = populateLinkedList(myLinkedList, items);
 
 // Print items in the demo linked list
@@ -101,3 +101,10 @@ console.log(`\nThe list contains ${numberOfElements} elements.`);
 let element = demo._find(numberOfElements - 4);
 console.log(`\nThe third element from the end of the list is at index ${element}: `, element);
 console.log(`\n***** End finding the third element from the end *****\n`);
+
+
+demo.reverse();
+printLinkedList(demo);
+
+let circular = demo.isCircular();
+console.log(`\nIs the linked list circular? ${circular}`);

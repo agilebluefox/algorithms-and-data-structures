@@ -58,21 +58,56 @@ export class LinkedList {
         return this._find(index).value;
     }
 
-    // Remove an item from the list
+    // Remove an node from the list
     remove(index) {
         // Make sure the index is valid
         if (index < 0 || index > this.length) {
             throw new Error('Index error');
         }
 
-        // If removing the first item
+        // If removing the first node
         if (index == 0) {
             this.head = this.head.next;
-        // If not the first item
+            // If not the first node
         } else {
             let node = this._find(index - 1);
             node.next = node.next.next;
         }
         this.length--;
+    }
+
+    reverse() {
+        // Get the first node in the list
+        let node = this.head;
+        // Get the next property of the first node
+        // Set the next node to the next property of the first node
+        let currentNode = node.next;
+        // Set the next property of the first node to null
+        node.next = null;
+        // Get the next node in the list
+        while (currentNode) {
+            let nextNode = currentNode.next;
+            currentNode.next = node;
+            node = currentNode;
+            currentNode = nextNode;
+        }
+        // Set the head to the last node
+        this.head = node;
+    }
+
+    isCircular() {
+        let pointer1 = this.head;
+        let pointer2 = this.head.next;
+        while(true) {
+            // Not circular if a next property is null
+            if (!pointer2 || !pointer2.next) {
+                return false;
+            } else if (pointer2 === pointer1 || pointer2.next === pointer1 ) {
+                return true;
+            } else {
+                pointer1 = pointer1.next;
+                pointer2 = pointer2.next.next;
+            }
+        }
     }
 }

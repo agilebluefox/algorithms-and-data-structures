@@ -27,7 +27,7 @@ function getRandValue(min, max) {
     return Math.floor((Math.random() * (max - min)) + min);
 }
 // Insert some dummy nodes
-var items = getRandValue(30, 179);
+var items = getRandValue(10, 15);
 var demo = populateLinkedList(myLinkedList, items);
 // Print items in the demo linked list
 console.log("\n***** The demo linked list *****\n");
@@ -91,4 +91,8 @@ console.log("\nThe list contains " + numberOfElements + " elements.");
 var element = demo._find(numberOfElements - 4);
 console.log("\nThe third element from the end of the list is at index " + element + ": ", element);
 console.log("\n***** End finding the third element from the end *****\n");
+demo.reverse();
+printLinkedList(demo);
+var circular = demo.isCircular();
+console.log("\nIs the linked list circular? " + circular);
 //# sourceMappingURL=linked-list-interviews.js.map
