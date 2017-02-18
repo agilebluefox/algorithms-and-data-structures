@@ -78,6 +78,7 @@ function printLinkedList(list) {
     }
 }
 printLinkedList(demo);
+console.log("Print the list", demo);
 console.log("\n***** End the linked list *****\n");
 console.log("\n***** Find the middle element of the linked list *****\n");
 var numberOfElements = countTheElements(demo);

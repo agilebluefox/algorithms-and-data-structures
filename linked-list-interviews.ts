@@ -102,9 +102,10 @@ let element = demo._find(numberOfElements - 4);
 console.log(`\nThe third element from the end of the list is at index ${element}: `, element);
 console.log(`\n***** End finding the third element from the end *****\n`);
 
-
+// Reverse the list
 demo.reverse();
 printLinkedList(demo);
 
+// Is the list circular?
 let circular = demo.isCircular();
 console.log(`\nIs the linked list circular? ${circular}`);

@@ -76,6 +76,7 @@ export class LinkedList {
         this.length--;
     }
 
+    // Method to reverse the linked list
     reverse() {
         // Get the first node in the list
         let node = this.head;
@@ -95,18 +96,25 @@ export class LinkedList {
         this.head = node;
     }
 
+    // Method to check if a node references another node in the list
+    // Use two pointers traveling in the list at different rates
+    // If the faster pointer circles around and catches up with 
+    // the slower pointer then the list is circular.
     isCircular() {
+        // Start the slower pointer behind the fast one
         let pointer1 = this.head;
         let pointer2 = this.head.next;
         while(true) {
             // Not circular if a next property is null
             if (!pointer2 || !pointer2.next) {
                 return false;
+            // Is circular if the pointers catch up with each other
             } else if (pointer2 === pointer1 || pointer2.next === pointer1 ) {
                 return true;
             } else {
-                pointer1 = pointer1.next;
-                pointer2 = pointer2.next.next;
+                // increment the pointers at different rates
+                pointer1 = pointer1.next; // slow
+                pointer2 = pointer2.next.next; // fast
             }
         }
     }
