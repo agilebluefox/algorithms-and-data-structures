@@ -58,16 +58,19 @@ function findPalindrome(word: string): boolean {
     }
 }
 
+// These words are palindromes
 words.forEach((word) => {
     let result = findPalindrome(word);
     console.log(`Any permutation of the word, ${word} is a palindrome? ${result}`);
 });
 
+// These words are not palindromes
 fails.forEach((word) => {
     let result = findPalindrome(word);
     console.log(`Any permutation of the word, ${word} is a palindrome? ${result}`);
 });
 
+// Here are some unusual palindromes
 weirds.forEach((word) => {
     let result = findPalindrome(word);
     console.log(`Any permutation of the word, ${word} is a palindrome? ${result}`);

@@ -58,14 +58,17 @@ function findPalindrome(word) {
         }
     }
 }
+// These words are palindromes
 words.forEach(function (word) {
     var result = findPalindrome(word);
     console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
 });
+// These words are not palindromes
 fails.forEach(function (word) {
     var result = findPalindrome(word);
     console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
 });
+// Here are some unusual palindromes
 weirds.forEach(function (word) {
     var result = findPalindrome(word);
     console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
