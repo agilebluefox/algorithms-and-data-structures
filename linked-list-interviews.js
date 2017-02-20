@@ -78,7 +78,6 @@ function printLinkedList(list) {
     }
 }
 printLinkedList(demo);
-console.log("Print the list", demo);
 console.log("\n***** End the linked list *****\n");
 console.log("\n***** Find the middle element of the linked list *****\n");
 var numberOfElements = countTheElements(demo);
@@ -92,8 +91,10 @@ console.log("\nThe list contains " + numberOfElements + " elements.");
 var element = demo._find(numberOfElements - 4);
 console.log("\nThe third element from the end of the list is at index " + element + ": ", element);
 console.log("\n***** End finding the third element from the end *****\n");
+// Reverse the list
 demo.reverse();
 printLinkedList(demo);
+// Is the list circular?
 var circular = demo.isCircular();
 console.log("\nIs the linked list circular? " + circular);
 //# sourceMappingURL=linked-list-interviews.js.map

@@ -64,6 +64,7 @@ var LinkedList = (function () {
         }
         this.length--;
     };
+    // Method to reverse the linked list
     LinkedList.prototype.reverse = function () {
         // Get the first node in the list
         var node = this.head;
@@ -82,7 +83,12 @@ var LinkedList = (function () {
         // Set the head to the last node
         this.head = node;
     };
+    // Method to check if a node references another node in the list
+    // Use two pointers traveling in the list at different rates
+    // If the faster pointer circles around and catches up with 
+    // the slower pointer then the list is circular.
     LinkedList.prototype.isCircular = function () {
+        // Start the slower pointer behind the fast one
         var pointer1 = this.head;
         var pointer2 = this.head.next;
         while (true) {
@@ -94,8 +100,9 @@ var LinkedList = (function () {
                 return true;
             }
             else {
-                pointer1 = pointer1.next;
-                pointer2 = pointer2.next.next;
+                // increment the pointers at different rates
+                pointer1 = pointer1.next; // slow
+                pointer2 = pointer2.next.next; // fast
             }
         }
     };
