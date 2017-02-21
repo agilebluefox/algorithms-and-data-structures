@@ -139,4 +139,9 @@ export class HashMap {
         this.length--;
         this._deleted++;
     }
+
+    keys() {
+        let keys = this._slots.filter((slot) => slot && slot.deleted === false).map((slot) => slot.key);
+        return keys;
+    }
 }

@@ -1,9 +1,9 @@
 // import the hash map class
 import { HashMap } from './hash-maps';
 
-let words = ['madam', 'amadm', 'cllci'];
-let fails = ['caabl', 'aaxxis', 'lklklk'];
-let weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf'];
+let words = ['madam', 'amadm', 'cllci', 'rrrtthh'];
+let fails = ['caabl', 'aaxxis', 'lklklk', 'lklklklt'];
+let weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf', 'fuuttbbww'];
 
 /**
  * Determine whether any permutation of a word is a palindrome
@@ -75,3 +75,51 @@ weirds.forEach((word) => {
     let result = findPalindrome(word);
     console.log(`Any permutation of the word, ${word} is a palindrome? ${result}`);
 });
+
+let anagrams = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
+
+/**
+ * Find the anagrams in a list of words
+ * 
+ * @param {string[]} words - The list of words to check
+ * @returns {array} An array of anagram arrays
+ */
+function findAnagrams(words: string[]) {
+    // Use an object to store the groups of anagrams
+    let anagrams = new HashMap(12);
+    // Iterate over the list of words
+    words.forEach((word) => {
+        // Take each word and sort it alphabetically
+        let ordered = word.split('').sort().join('');
+        console.log(`The letters of the word sorted are:`, ordered);
+        // Then store the word as a key in the hash map
+        let values = [];
+        // If the word already exists, add it to the values
+        if (anagrams.get(ordered)) {
+            // Push the word into an array and store as value
+            values = anagrams.get(ordered);
+            console.log(`The values are: `, values);
+        }
+        // If the word doesn't exist, add the key to the object
+        values.push(word);
+        console.log(`The values are: `, values);
+        anagrams.set(ordered, values);
+    });
+    // When all the words have been evaluated, return an array
+    // that contains an array of anagrams for each group
+    let anagramGroups = [];
+    // Use the keys method to get the keys in the hash map
+    let anagramKeys = anagrams.keys();
+    // Iterate over the keys and get the values
+    anagramKeys.forEach((key) => {
+        console.log(`The current key is: ${key}`);
+        let anagramValues = anagrams.get(key);
+        // Push the anagram values (arrays) to an array to return
+        anagramGroups.push(anagramValues);
+    });
+    // Return the single array that contains the anagrams
+    return anagramGroups;
+}
+
+let result = findAnagrams(anagrams);
+console.log(`The list of anagrams is: `, result);

@@ -123,6 +123,10 @@ var HashMap = (function () {
         this.length--;
         this._deleted++;
     };
+    HashMap.prototype.keys = function () {
+        var keys = this._slots.filter(function (slot) { return slot && slot.deleted === false; }).map(function (slot) { return slot.key; });
+        return keys;
+    };
     return HashMap;
 }());
 exports.HashMap = HashMap;

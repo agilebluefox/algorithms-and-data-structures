@@ -1,9 +1,9 @@
 "use strict";
 // import the hash map class
 var hash_maps_1 = require("./hash-maps");
-var words = ['madam', 'amadm', 'cllci'];
-var fails = ['caabl', 'aaxxis', 'lklklk'];
-var weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf'];
+var words = ['madam', 'amadm', 'cllci', 'rrrtthh'];
+var fails = ['caabl', 'aaxxis', 'lklklk', 'lklklklt'];
+var weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf', 'fuuttbbww'];
 /**
  * Determine whether any permutation of a word is a palindrome
  *
@@ -73,4 +73,39 @@ weirds.forEach(function (word) {
     var result = findPalindrome(word);
     console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
 });
+var anagrams = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
+function findAnagrams(words) {
+    // Use an object to store the groups of anagrams
+    var anagrams = new hash_maps_1.HashMap(12);
+    // Iterate over the list of words
+    words.forEach(function (word) {
+        // Take each word and sort it alphabetically
+        var ordered = word.split('').sort().join('');
+        console.log("The letters of the word sorted are:", ordered);
+        // Then store the word as a key in the hash map
+        var values = [];
+        // If the word already exists, add it to the values
+        if (anagrams.get(ordered)) {
+            // Push the word into an array and store as value
+            values = anagrams.get(ordered);
+            console.log("The values are: ", values);
+        }
+        // If the word doesn't exist, add the key to the object
+        values.push(word);
+        console.log("The values are: ", values);
+        anagrams.set(ordered, values);
+    });
+    // When all the words have been evaluated, return an array
+    // that contains an array of anagrams for each group
+    var anagramGroups = [];
+    var anagramKeys = anagrams.keys();
+    anagramKeys.forEach(function (key) {
+        console.log("The current key is: " + key);
+        var anagramValues = anagrams.get(key);
+        anagramGroups.push(anagramValues);
+    });
+    return anagramGroups;
+}
+var result = findAnagrams(anagrams);
+console.log("The list of anagrams is: ", result);
 //# sourceMappingURL=hash-map-interviews.js.map
