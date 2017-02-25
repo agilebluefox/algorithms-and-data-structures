@@ -1,6 +1,7 @@
 "use strict";
 // import the hash map class
-var hash_maps_1 = require("./hash-maps");
+var hash_map_chaining_1 = require("./hash-map-chaining");
+var test = ['madam'];
 var words = ['madam', 'amadm', 'cllci', 'rrrtthh'];
 var fails = ['caabl', 'aaxxis', 'lklklk', 'lklklklt'];
 var weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf', 'fuuttbbww'];
@@ -12,7 +13,7 @@ var weirds = ['bbbbb', 'nnnnnnj', 'uu', 'h', 'ppyyttaaf', 'fuuttbbww'];
  */
 function findPalindrome(word) {
     // Create a hash map to store the letters
-    var myHashMap = new hash_maps_1.HashMap(8);
+    var myHashMap = new hash_map_chaining_1.HashMapChained(8);
     // Counter to track an odd count of a given letter
     var oddLetter = 0;
     // Assume that any single letter is a palindrome
@@ -58,64 +59,23 @@ function findPalindrome(word) {
         }
     }
 }
+test.forEach(function (word) {
+    var result = findPalindrome(word);
+    console.log("Any permutation of the word, " + word + ", is a palindrome? " + result);
+});
 // These words are palindromes
 words.forEach(function (word) {
     var result = findPalindrome(word);
-    console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
+    console.log("Any permutation of the word, " + word + ", is a palindrome? " + result);
 });
 // These words are not palindromes
 fails.forEach(function (word) {
     var result = findPalindrome(word);
-    console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
+    console.log("Any permutation of the word, " + word + ", is a palindrome? " + result);
 });
 // Here are some unusual palindromes
 weirds.forEach(function (word) {
     var result = findPalindrome(word);
-    console.log("Any permutation of the word, " + word + " is a palindrome? " + result);
+    console.log("Any permutation of the word, " + word + ", is a palindrome? " + result);
 });
-var anagrams = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
-/**
- * Find the anagrams in a list of words
- *
- * @param {string[]} words - The list of words to check
- * @returns {array} An array of anagram arrays
- */
-function findAnagrams(words) {
-    // Use an object to store the groups of anagrams
-    var anagrams = new hash_maps_1.HashMap(12);
-    // Iterate over the list of words
-    words.forEach(function (word) {
-        // Take each word and sort it alphabetically
-        var ordered = word.split('').sort().join('');
-        console.log("The letters of the word sorted are:", ordered);
-        // Then store the word as a key in the hash map
-        var values = [];
-        // If the word already exists, add it to the values
-        if (anagrams.get(ordered)) {
-            // Push the word into an array and store as value
-            values = anagrams.get(ordered);
-            console.log("The values are: ", values);
-        }
-        // If the word doesn't exist, add the key to the object
-        values.push(word);
-        console.log("The values are: ", values);
-        anagrams.set(ordered, values);
-    });
-    // When all the words have been evaluated, return an array
-    // that contains an array of anagrams for each group
-    var anagramGroups = [];
-    // Use the keys method to get the keys in the hash map
-    var anagramKeys = anagrams.keys();
-    // Iterate over the keys and get the values
-    anagramKeys.forEach(function (key) {
-        console.log("The current key is: " + key);
-        var anagramValues = anagrams.get(key);
-        // Push the anagram values (arrays) to an array to return
-        anagramGroups.push(anagramValues);
-    });
-    // Return the single array that contains the anagrams
-    return anagramGroups;
-}
-var result = findAnagrams(anagrams);
-console.log("The list of anagrams is: ", result);
-//# sourceMappingURL=hash-map-interviews.js.map
+//# sourceMappingURL=hash-map-chained-test.js.map

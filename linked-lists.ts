@@ -1,12 +1,31 @@
 export class LinkedList {
-    private length;
-    private head;
+    public length;
+    public head;
 
 
     // constructor
     constructor() {
         this.length = 0;
         this.head = null;
+    }
+
+    // Method to update a node already in the list
+    update(index, value) {
+        // Make sure the index is valid
+        if (index < 0 || index > this.length) {
+            throw new Error('Index error');
+        }
+
+        // If the node to be modified is on the front of the list
+        if (index == 0) {
+            this.head.value = value;
+            // If the node is in the middle somewhere
+        } else {
+            // find the node after which to insert the new node
+            const node = this._find(index - 1);
+            // The link on the previous node should be the new node
+            node.value = value;
+        }
     }
 
     // Method to insert a new value in the list
@@ -104,12 +123,12 @@ export class LinkedList {
         // Start the slower pointer behind the fast one
         let pointer1 = this.head;
         let pointer2 = this.head.next;
-        while(true) {
+        while (true) {
             // Not circular if a next property is null
             if (!pointer2 || !pointer2.next) {
                 return false;
-            // Is circular if the pointers catch up with each other
-            } else if (pointer2 === pointer1 || pointer2.next === pointer1 ) {
+                // Is circular if the pointers catch up with each other
+            } else if (pointer2 === pointer1 || pointer2.next === pointer1) {
                 return true;
             } else {
                 // increment the pointers at different rates

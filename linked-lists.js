@@ -5,6 +5,23 @@ var LinkedList = (function () {
         this.length = 0;
         this.head = null;
     }
+    // Method to update a node already in the list
+    LinkedList.prototype.update = function (index, value) {
+        // Make sure the index is valid
+        if (index < 0 || index > this.length) {
+            throw new Error('Index error');
+        }
+        // If the node to be modified is on the front of the list
+        if (index == 0) {
+            this.head.value = value;
+        }
+        else {
+            // find the node after which to insert the new node
+            var node = this._find(index - 1);
+            // The link on the previous node should be the new node
+            node.value = value;
+        }
+    };
     // Method to insert a new value in the list
     LinkedList.prototype.insert = function (index, value) {
         // Make sure the index is valid
