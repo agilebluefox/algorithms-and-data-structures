@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // The word's worst allocator
 var memory = new Float64Array(1024);
 var head = 0;

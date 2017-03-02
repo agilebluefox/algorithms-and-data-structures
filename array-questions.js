@@ -48,6 +48,7 @@ function mergeSortArray(array1, array2) {
             console.log("X is " + x + ", Y is " + y + ": ", merged);
             // Go to the next value in the first array
             x += 1;
+            // Value 1 is equal to value 2
         }
         else if (array1[x] === array2[y]) {
             // Push value 1 to the merged array
@@ -55,6 +56,7 @@ function mergeSortArray(array1, array2) {
             console.log("X is " + x + ", Y is " + y + ": ", merged);
             // Go to the next value in the first array
             x += 1;
+            // Value 2 is less than value 1
         }
         else if (array1[x] > array2[y]) {
             // Push value 2 to the merged array

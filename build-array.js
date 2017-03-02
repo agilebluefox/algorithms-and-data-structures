@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // Use the memory module to build an array
 var memory = require("./memory");
 // Build an array of zero length to represent memory

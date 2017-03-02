@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // import the linked list class
 var linked_lists_1 = require("./linked-lists");
 var HashMapChained = (function () {
@@ -21,8 +22,11 @@ var HashMapChained = (function () {
         // Get the index of the slot
         var index = this._findSlot(key);
         // console.log(`The index to set is: ${index}`);
+        // variable to store the list object
         var list;
+        // The index of the node in the list
         var nodeIndex;
+        // The object containing the value 
         var data = {};
         data[key] = value;
         // console.log(`The data to store is: `, data);
@@ -44,6 +48,7 @@ var HashMapChained = (function () {
                     list.update(nodeIndex, data);
                 }
                 else {
+                    // the key isn't stored so add it to the linked list
                     nodeIndex = list.length;
                     list.insert(nodeIndex, data);
                 }

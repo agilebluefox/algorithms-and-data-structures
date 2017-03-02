@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var HashMap = (function () {
     /**
      * Creates an instance of HashMap.
@@ -47,6 +48,7 @@ var HashMap = (function () {
         var index = this._findSlot(key);
         if (this._slots[index] === undefined) {
             return undefined;
+            // throw new Error('Key error');
         }
         return this._slots[index].value;
     };

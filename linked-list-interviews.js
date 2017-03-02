@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // Import the LinkedList class
 var linked_lists_1 = require("./linked-lists");
 // Create a linked list

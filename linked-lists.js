@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var LinkedList = (function () {
     // constructor
     function LinkedList() {
@@ -14,6 +15,7 @@ var LinkedList = (function () {
         // If the node to be modified is on the front of the list
         if (index == 0) {
             this.head.value = value;
+            // If the node is in the middle somewhere
         }
         else {
             // find the node after which to insert the new node
@@ -37,6 +39,7 @@ var LinkedList = (function () {
         if (index == 0) {
             newNode.next = this.head;
             this.head = newNode;
+            // If the node is in the middle somewhere
         }
         else {
             // find the node after which to insert the new node
@@ -74,6 +77,7 @@ var LinkedList = (function () {
         // If removing the first node
         if (index == 0) {
             this.head = this.head.next;
+            // If not the first node
         }
         else {
             var node = this._find(index - 1);
@@ -112,6 +116,7 @@ var LinkedList = (function () {
             // Not circular if a next property is null
             if (!pointer2 || !pointer2.next) {
                 return false;
+                // Is circular if the pointers catch up with each other
             }
             else if (pointer2 === pointer1 || pointer2.next === pointer1) {
                 return true;

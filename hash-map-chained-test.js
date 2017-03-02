@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // import the hash map class
 var hash_map_chaining_1 = require("./hash-map-chaining");
 var test = ['madam'];
@@ -19,6 +20,7 @@ function findPalindrome(word) {
     // Assume that any single letter is a palindrome
     if (word.length === 1) {
         return true;
+        // If the word contains more than one letter...
     }
     else {
         // Iterate over the letters and store a frequency count
@@ -41,6 +43,8 @@ function findPalindrome(word) {
                     oddLetter -= 1;
                 }
                 myHashMap.set(letter, count_1);
+                // console.log(`The number of odd letters is ${oddLetter}`);
+                // If the letter has not been seen before...
             }
             else {
                 count_1 = 1;
