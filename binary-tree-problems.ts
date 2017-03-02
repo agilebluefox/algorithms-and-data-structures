@@ -21,6 +21,7 @@ import { BinaryTree } from './binary-tree';
 // bstree.insert(31, 'coffee');
 // bstree.insert(33, 'bottle');
 
+// Create a binary search tree and insert some keys
 let btree = new BinaryTree();
 
 btree.insert(7);
@@ -72,7 +73,10 @@ console.log(`\n***** Get the height of the Tree *****\n`);
 let height = btree.calcHeight();
 console.log(`The height of the tree is: ${height}`);
 
+// Print out the tree structure to use as a guide
 console.log(btree);
+
+// Make a tree that doesn't follow the requirements of the binary search tree
 let myTree = {
     root: {
         key: 1,
@@ -89,6 +93,7 @@ let myTree = {
     }
 };
 
+// Function to determine whether a binary tree is a binary search tree
 function isSearchTree(tree) {
     // if no nodes return
     // get the first node
@@ -96,29 +101,39 @@ function isSearchTree(tree) {
     return _isSearchTree(root);
 }
 
+// Helper function to evaluate tree type
 function _isSearchTree(node) {
+    // If the node is null then no requirements for a search tree were found
     if (node === null) {
         return true;
     }
 
+    // Check the left node key is less than the node key
     if (node.left) {
+        // If the left node key is greater it's not a search tree
         if (node.left.key > node.key) {
             return false;
+        // otherwise keep going left
         } else if (node.left.key < node.key) {
             _isSearchTree(node.left);
         }
     }
 
+    // Check teh right node key is greater than the node key
     if (node.right) {
+        // If the right node key is less it's not a search tree
         if (node.right.key < node.key) {
             return false;
+        // otherwise keep going right
         } else {
             _isSearchTree(node.right);
         }
     }
+    // if all checks pass the requirements it's a search tree
     return true;
 }
 
+// Check the trees and determine which are binary search trees
 console.log(`\n***** Identify Type of Binary Tree *****\n`);
 console.log(`My tree is a binary search tree: ${isSearchTree(myTree)}`);
 console.log(`My tree is a binary search tree: ${isSearchTree(btree)}`);
