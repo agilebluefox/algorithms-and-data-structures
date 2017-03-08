@@ -60,7 +60,7 @@ btree.postOrderTraverse(printNode);
 let keys = [1, 8, 25, 12, 13, 50];
 console.log(`\n***** Search for Key *****\n`)
 keys.forEach((k) => {
-    console.log(btree.search(k) ? `Key ${k} found` : `Key ${k} not found`);
+    console.log(btree.dfSearch(k) ? `Key ${k} found` : `Key ${k} not found`);
 });
 
 // find the third largest key in the tree
@@ -119,7 +119,7 @@ function _isSearchTree(node) {
         }
     }
 
-    // Check teh right node key is greater than the node key
+    // Check the right node key is greater than the node key
     if (node.right) {
         // If the right node key is less it's not a search tree
         if (node.right.key < node.key) {
@@ -136,5 +136,4 @@ function _isSearchTree(node) {
 // Check the trees and determine which are binary search trees
 console.log(`\n***** Identify Type of Binary Tree *****\n`);
 console.log(`My tree is a binary search tree: ${isSearchTree(myTree)}`);
-console.log(`My tree is a binary search tree: ${isSearchTree(btree)}`);
-
+console.log(`Btree is a binary search tree: ${isSearchTree(btree)}`);
