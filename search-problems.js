@@ -50,10 +50,13 @@ function highestFloor(topFloor, eggs) {
     var maxFloor = getRandomFloor(bottomFloor, topFloor);
     console.log("The max floor is: " + maxFloor);
     // Go drop some eggs
-    return _dropEggs(bottomFloor, maxFloor, eggs, 0);
+    console.log("Using the brute force strategy the result is: ");
+    var bf = _dropEggsBruteForce(bottomFloor, maxFloor, eggs, 0);
+    console.log("Using the divide and conquer strategy the result is: ");
+    var dc = _dropEggsDivideAndConquer(bottomFloor, topFloor, maxFloor, eggs, null);
 }
 // Helper function to recursively search for the highest floor
-function _dropEggs(bottomFloor, maxFloor, eggs, drops) {
+function _dropEggsBruteForce(bottomFloor, maxFloor, eggs, drops) {
     // Keep track of the number of iterations
     drops = drops || 0;
     // Object to store the iterations and the floor number
@@ -61,7 +64,7 @@ function _dropEggs(bottomFloor, maxFloor, eggs, drops) {
         count: 0,
         floor: 0
     };
-    // Start with the lowest floor - if the egg does not break keep going higher
+    // Drop an egg starting with the lowest floor - if the egg does not break keep going higher
     if (bottomFloor === maxFloor) {
         highestFloorPossible.count = drops + 1;
         highestFloorPossible.floor = bottomFloor;
@@ -83,7 +86,7 @@ function _dropEggs(bottomFloor, maxFloor, eggs, drops) {
             drops += 1;
         }
         // Drop another egg to see what happens
-        return _dropEggs(bottomFloor, maxFloor, eggs, drops);
+        return _dropEggsBruteForce(bottomFloor, maxFloor, eggs, drops);
     }
     else {
         // Something went wrong
@@ -91,10 +94,47 @@ function _dropEggs(bottomFloor, maxFloor, eggs, drops) {
         return highestFloorPossible;
     }
 }
+function _dropEggsDivideAndConquer(bottomFloor, topFloor, maxFloor, eggs, drops) {
+    // Keep track of the number of iterations
+    drops = drops || 0;
+    // Keep track of the highest floor which the egg can be dropped without breaking
+    var highestFloor = null;
+    // Object to store the iterations and the floor number
+    var highestFloorPossible = {
+        count: 0,
+        floor: 0
+    };
+    // Drop the egg from the floor in the middle of the range
+    // If it breaks, the solution is in the lower half of the range
+    // Otherwise, it's in the upper half
+    // Choose the floor that is halfway to the top and repeat
+    var middle = Math.floor(((topFloor - bottomFloor) / 2) + bottomFloor);
+    // Drop an egg from the middle floor 
+    drops += 1;
+    // If the egg breaks
+    if (middle >= maxFloor) {
+        eggs -= 1;
+        var floor = bottomFloor;
+        while (floor <= maxFloor) {
+            floor += 1;
+            drops += 1;
+        }
+        highestFloor = floor - 1;
+    }
+    else {
+        bottomFloor = middle + 1;
+        return _dropEggsDivideAndConquer(bottomFloor, topFloor, maxFloor, eggs, drops);
+    }
+    highestFloorPossible.floor = highestFloor;
+    highestFloorPossible.count = drops;
+    // Print the result to the console to evaluate effectiveness and efficiency
+    console.log("The highest possible floor to drop the egg without breaking is: " + highestFloorPossible.floor);
+    console.log("It took " + highestFloorPossible.count + " attempts to find the highest floor.\n");
+    return highestFloorPossible;
+}
 // Return a random floor
 function getRandomFloor(min, max) {
     return Math.floor((Math.random() * max - min) + min);
 }
 var topfloor = highestFloor(100, 2);
-console.log(topfloor);
 //# sourceMappingURL=search-problems.js.map
