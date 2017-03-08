@@ -59,27 +59,44 @@ var BinaryTree = (function () {
         }
     };
     // Search for a key 
-    BinaryTree.prototype.search = function (key) {
-        return this._search(this.root, key);
+    BinaryTree.prototype.dfSearch = function (key) {
+        return this._dfSearch(this.root, key);
     };
     // Helper method to check a node for a value
-    BinaryTree.prototype._search = function (node, key) {
+    BinaryTree.prototype._dfSearch = function (node, key) {
         // If the node is empty then the value was not found
         if (node === null) {
             return false;
         }
         // If the value is less than the current key keep going left
         if (key < node.key) {
-            return this._search(node.left, key);
+            return this._dfSearch(node.left, key);
             // If the value is greater than the current key keep going right
         }
         else if (key > node.key) {
-            return this._search(node.right, key);
+            return this._dfSearch(node.right, key);
         }
         else {
             // If the value is neither greater than or less than the key, it must be the value
             return true;
         }
+    };
+    BinaryTree.prototype.bfSearch = function (key) {
+        var queue = [this.root];
+        while (queue.length) {
+            var node = queue.shift();
+            if (node.key === key) {
+                return node;
+            }
+            if (node.left) {
+                queue.push(node.left);
+            }
+            if (node.right) {
+                queue.push(node.right);
+            }
+        }
+        console.log("The key was not found");
+        return null;
     };
     // Traverse the tree in sorting order
     BinaryTree.prototype.inOrderTraverse = function (cb) {

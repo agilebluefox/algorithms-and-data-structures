@@ -64,27 +64,48 @@ export class BinaryTree {
     }
 
     // Search for a key 
-    search(key: number): boolean {
-        return this._search(this.root, key);
+    dfSearch(key: number): boolean {
+        return this._dfSearch(this.root, key);
     }
 
     // Helper method to check a node for a value
-    private _search(node: Node, key: number): boolean {
+    private _dfSearch(node: Node, key: number): boolean {
         // If the node is empty then the value was not found
         if (node === null) {
             return false;
         }
         // If the value is less than the current key keep going left
         if (key < node.key) {
-            return this._search(node.left, key);
+            return this._dfSearch(node.left, key);
             // If the value is greater than the current key keep going right
         } else if (key > node.key) {
-            return this._search(node.right, key);
+            return this._dfSearch(node.right, key);
         } else {
             // If the value is neither greater than or less than the key, it must be the value
             return true;
         }
     }
+
+    bfSearch(key: number): Node {
+        let queue: Node[] = [this.root];
+
+        while (queue.length) {
+            let node: Node = queue.shift();
+            if (node.key === key) {
+                return node;
+            }
+
+            if (node.left) {
+                queue.push(node.left);
+            }
+
+            if (node.right) {
+                queue.push(node.right);
+            }
+        }
+        console.log(`The key was not found`);
+        return null;
+    } 
 
     // Traverse the tree in sorting order
     inOrderTraverse(cb: any) {
